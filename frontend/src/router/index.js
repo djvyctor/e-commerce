@@ -49,13 +49,18 @@ const router = createRouter({
   ]
 })
 
-router.beforeEach((to, from, next) => {
+function hasValidToken() {
   const token = localStorage.getItem(TOKEN_KEY)
+  return typeof token === 'string' && token.length > 0
+}
+
+router.beforeEach((to, from, next) => {
+  const isLoggedIn = hasValidToken()
   const requiresAuth = to.matched.some((r) => r.meta.requiresAuth)
 
-  if (requiresAuth && !token) {
+  if (requiresAuth && !isLoggedIn) {
     next({ name: 'Login' })
-  } else if (to.name === 'Login' && token) {
+  } else if (to.name === 'Login' && isLoggedIn) {
     next({ name: 'Dashboard' })
   } else {
     next()

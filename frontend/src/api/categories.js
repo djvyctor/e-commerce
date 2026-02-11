@@ -1,4 +1,4 @@
-import { apiGet } from '@/services/ApiClient'
+import { apiGet } from '@/infra/ApiClient'
 
 export function getCategories() {
   return apiGet('/categories')

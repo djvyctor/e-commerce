@@ -1,4 +1,4 @@
-import { apiGet, apiPost, apiPut, apiDelete } from '@/services/ApiClient'
+import { apiGet, apiPost, apiPut, apiDelete } from '@/infra/ApiClient'
 
 const DEFAULT_IMAGE_URL = 'https://placehold.co/400'
 

@@ -1,4 +1,4 @@
-import { HttpClient } from '@/services/HttpClient'
+import { HttpClient } from '@/infra/HttpClient'
 import { env } from '@/config/env'
 
 const httpClient = new HttpClient(env.apiBaseUrl)
