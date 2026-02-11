@@ -72,7 +72,7 @@ A URL da API é definida por `VITE_API_BASE_URL` (ver `.env.example`). O arquivo
 ## Decisões técnicas
 
 - **Estado:** Pinia apenas para autenticação (token, login, logout). Listas, filtros e formulários ficam em estado local nas views/componentes para não poluir o store e facilitar manutenção.
-- **HTTP:** Cliente único em `services/HttpClient.js` e `ApiClient.js`; módulos em `api/` (auth, products, categories) usam o ApiClient. Token enviado no header `Authorization` em rotas que exigem autenticação.
+- **HTTP:** Cliente único em `infra/HttpClient.js` e `ApiClient.js`; módulos em `api/` (auth, products, categories) usam o ApiClient. Token enviado no header `Authorization` em rotas que exigem autenticação.
 - **Rotas:** Guard global no router verifica token e redireciona para login nas rotas protegidas; layout único (AppLayout) para dashboard e produtos.
 - **Paginação:** Servidor (offset + limit) na listagem de produtos; filtros com debounce para evitar requisições excessivas.
 - **Gráficos:** Chart.js + vue-chartjs; componentes por tipo (Bar, Donut, Line, HorizontalBar, Wave) reutilizáveis com os mesmos dados em visualizações diferentes quando faz sentido.
